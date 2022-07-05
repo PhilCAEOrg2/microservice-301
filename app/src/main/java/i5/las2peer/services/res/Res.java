@@ -97,7 +97,7 @@ public class Res extends RESTService {
    * @return Response 
    * 
    */
-  @GET
+  @POST
   @Path("/test")
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
