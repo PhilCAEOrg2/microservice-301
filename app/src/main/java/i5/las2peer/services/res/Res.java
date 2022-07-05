@@ -107,8 +107,14 @@ public class Res extends RESTService {
   })
   @ApiOperation(value = "gettest", notes = " ")
   public Response gettest(String body) {
-    JSONObject body_JSON = (JSONObject) JSONValue.parse(body);
-
+   classes.User payloadbodyObject = new classes().new User();
+   try { 
+       payloadbodyObject.fromJSON(body);
+   } catch (Exception e) { 
+       e.printStackTrace();
+       JSONObject result = new JSONObject();
+       return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity("Cannot convert json to object").build();
+   }
 
 
 
