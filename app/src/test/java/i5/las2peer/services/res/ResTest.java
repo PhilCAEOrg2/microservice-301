@@ -116,6 +116,37 @@ public class ResTest {
   }
 
 
+  /**
+   * 
+   * Test for the TestPOSTPOSTtest_ID27962 method.
+   * 
+   */
+  @Test
+  public void testTestPOSTPOSTtest_ID27962() {
+    MiniClientCoverage c = new MiniClientCoverage(mainPath);
+    c.setConnectorEndpoint(connector.getHttpEndpoint());
+    
+        
+    try {
+      c.setLogin(AnonymousAgentImpl.IDENTIFIER, "");
+      ClientResponse result = c.sendRequest("POST", "/test", """
+{
+  "loggedIn":true,
+  "id":100,
+  "username":"text"
+}""", "application/json", "*/*", new HashMap<>(), new Object[0]);
+      System.out.println("Result of request with id: 46000: " + result.getResponse().trim());
+    
+      Assert.assertEquals("[230499]", 201, result.getHttpCode());
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      fail("Exception: " + e);
+    }
+    
+
+    
+  }
 
 
 
